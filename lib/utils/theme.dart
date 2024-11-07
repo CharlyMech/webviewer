@@ -29,12 +29,27 @@ extension MyThemeToThemeData on MyTheme {
             ? Brightness.light
             : Brightness.dark,
       ),
+
+      iconButtonTheme: IconButtonThemeData(
+          style: ButtonStyle(
+        backgroundColor:
+            WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+          return Color(int.parse(primaryColor.replaceFirst('#', '0xff')));
+        }),
+        foregroundColor:
+            WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+          return Color(int.parse(white.replaceFirst('#', '0xff')));
+        }),
+      )),
+
       floatingActionButtonTheme: FloatingActionButtonThemeData(
+        iconSize: 45,
+        sizeConstraints: const BoxConstraints(minWidth: 70, minHeight: 70),
         backgroundColor:
             Color(int.parse(primaryColor.replaceFirst('#', '0xff'))),
-        iconSize: 40,
         foregroundColor: Color(int.parse(white.replaceFirst('#', '0xff'))),
       ),
+
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
         backgroundColor:
