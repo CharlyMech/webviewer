@@ -12,6 +12,8 @@ class CustomSliverAppbar extends SliverPersistentHeaderDelegate {
         shrinkOffset > minExtent ? minExtent : shrinkOffset;
     double offset = (minExtent - adjustedShrinkOffset) * 0.5;
     double topPadding = MediaQuery.of(context).padding.top + 16;
+    final double imageOpacity = 1.0 - (shrinkOffset / maxExtent);
+    double textOpacity = (shrinkOffset / maxExtent).clamp(0.0, 1.0);
 
     return Stack(
       alignment: AlignmentDirectional.center,
@@ -27,6 +29,36 @@ class CustomSliverAppbar extends SliverPersistentHeaderDelegate {
             child: PopupMenu(),
           ),
         ),
+        Positioned(
+          top: topPadding,
+          left: 16,
+          child: Opacity(
+            opacity: textOpacity,
+            child: Text(
+              'WebViewer',
+              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    color: Colors.white, // Set text color as needed
+                  ),
+            ),
+          ),
+        ),
+        /* // TODO -> Logo/Image to be designed
+        Positioned(
+          top: offset - 75,
+          left: 16,
+          child: Container(
+            width: 200,
+            height: 200,
+            color: Colors.cyan,
+            child: Opacity(
+              opacity: fadeOpacity,
+              child: Image.network(
+                'https://pbs.twimg.com/media/Eu7e3mQVgAImK2o.png',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ), */
         // TODO -> WebViewer logo that disappears with scroll
         Positioned(
           bottom: offset + 15,
