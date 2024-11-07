@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:toastification/toastification.dart';
 import 'package:webviewer/widgets/appbar_search.dart';
 import 'package:webviewer/widgets/clipped_appbar.dart';
+import 'package:webviewer/widgets/popup_menu.dart';
 
 class CustomSliverAppbar extends SliverPersistentHeaderDelegate {
   @override
@@ -23,17 +24,7 @@ class CustomSliverAppbar extends SliverPersistentHeaderDelegate {
           right: 0,
           child: Padding(
             padding: EdgeInsets.fromLTRB(0, topPadding, 0, 0),
-            child: IconButton(
-              icon: const Icon(Icons.more_vert),
-              iconSize: 30,
-              style: ButtonStyle(
-                backgroundColor: WidgetStateProperty.resolveWith<Color?>(
-                    (Set<WidgetState> states) {
-                  return Colors.transparent;
-                }),
-              ),
-              onPressed: () {},
-            ),
+            child: PopupMenu(),
           ),
         ),
         // TODO -> WebViewer logo that disappears with scroll
