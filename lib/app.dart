@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:webviewer/config/router.dart';
+import 'package:webviewer/constants/themes.dart';
+import 'package:webviewer/utils/theme.dart';
 
 class App extends StatelessWidget {
-  const App({super.key});
+  final ThemeType appTheme;
+  const App({super.key, required this.appTheme});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'WebViewer',
       routerConfig: goRouter,
-      debugShowCheckedModeBanner: false,
+      theme: themes[appTheme]!.toThemeData(),
+      // debugShowCheckedModeBanner: false,
     );
   }
 }
