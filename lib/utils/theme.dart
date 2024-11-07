@@ -79,6 +79,13 @@ extension MyThemeToThemeData on MyTheme {
               (Set<WidgetState> states) {
             return Color(int.parse(white.replaceFirst('#', '0xff')));
           }),
+          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+            const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(10),
+              ),
+            ),
+          ),
         )),
         popupMenuTheme: PopupMenuThemeData(
           iconColor: Color(int.parse(white.replaceFirst('#', '0xff'))),
