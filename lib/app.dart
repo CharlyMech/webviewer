@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:iedib_wv/config/router.dart';
+import 'package:webviewer/config/router.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

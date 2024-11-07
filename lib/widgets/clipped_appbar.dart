@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:iedib_wv/utils/appbar_clipper.dart';
+import 'package:webviewer/utils/appbar_clipper.dart';
 
 class ClippedAppbar extends StatelessWidget {
   final double height;

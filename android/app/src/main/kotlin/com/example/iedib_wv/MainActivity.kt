@@ -1,4 +1,4 @@
-package com.example.iedib_wv
+package com.example.webviewer
 
 import io.flutter.embedding.android.FlutterActivity
 

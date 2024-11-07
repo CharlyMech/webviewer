@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:iedib_wv/screens/home.dart';
-import 'package:iedib_wv/screens/web_view_screen.dart';
+import 'package:webviewer/screens/home.dart';
+import 'package:webviewer/screens/web_view_screen.dart';
 
 final goRouter = GoRouter(routes: [
   GoRoute(

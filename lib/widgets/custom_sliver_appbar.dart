@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:iedib_wv/widgets/clipped_appbar.dart';
+import 'package:webviewer/widgets/clipped_appbar.dart';
 
 class CustomSliverAppbar extends SliverPersistentHeaderDelegate {
   @override

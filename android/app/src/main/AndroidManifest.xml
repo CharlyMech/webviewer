@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="iedib_wv"
+        android:label="webviewer"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
-import 'package:iedib_wv/widgets/custom_sliver_appbar.dart';
+import 'package:webviewer/widgets/custom_sliver_appbar.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
