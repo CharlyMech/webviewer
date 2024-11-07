@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:webviewer/widgets/appbar_search.dart';
 import 'package:webviewer/widgets/clipped_appbar.dart';
 
 class CustomSliverAppbar extends SliverPersistentHeaderDelegate {
@@ -11,11 +12,16 @@ class CustomSliverAppbar extends SliverPersistentHeaderDelegate {
     double topPadding = MediaQuery.of(context).padding.top + 16;
 
     return Stack(
+      alignment: AlignmentDirectional.center,
       children: [
         ClippedAppbar(
           height: 300,
         ),
-        Positioned(top: topPadding + offset, child: Text('WebViewer'))
+        // TODO -> WebViewer logo that disappears with scroll
+        Positioned(
+          bottom: offset + 15,
+          child: AppbarSearch(),
+        ),
       ],
     );
   }
