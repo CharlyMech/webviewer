@@ -4,7 +4,7 @@ class AppbarClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     var path = Path();
-    const minSize = 140.0;
+    const minSize = 160.0;
     /* 
     when h = max = 300
     h = 300, p1 = 210, p1Diff = 70
