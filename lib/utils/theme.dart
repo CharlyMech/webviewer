@@ -76,7 +76,7 @@ extension MyThemeToThemeData on MyTheme {
           }),
         )),
         popupMenuTheme: PopupMenuThemeData(
-          surfaceTintColor: Colors.lime,
+          iconColor: Color(int.parse(white.replaceFirst('#', '0xff'))),
           iconSize: 30,
         ));
   }

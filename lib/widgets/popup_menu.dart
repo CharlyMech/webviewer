@@ -7,7 +7,6 @@ class PopupMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
-      surfaceTintColor: Colors.amber,
       onSelected: (String value) {
         // ? Temporary code
         toastification.show(
