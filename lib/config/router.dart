@@ -13,7 +13,7 @@ final goRouter = GoRouter(routes: [
     path: '/add',
     pageBuilder: (context, state) => CustomTransitionPage(
         key: state.pageKey,
-        child: const AddWebScreen(),
+        child: AddWebScreen(),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           return SlideTransition(
             position: Tween<Offset>(
