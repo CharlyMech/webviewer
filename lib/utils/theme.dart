@@ -30,6 +30,23 @@ extension MyThemeToThemeData on MyTheme {
             : Brightness.dark,
       ),
 
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor:
+            Color(int.parse(white.replaceFirst('#', '0xff'))).withOpacity(0.95),
+        prefixIconColor:
+            Color(int.parse(black.replaceFirst('#', '0xff'))).withOpacity(0.5),
+        hintStyle: TextStyle(
+          color: Color(int.parse(black.replaceFirst('#', '0xff')))
+              .withOpacity(0.5),
+        ),
+        focusColor: const Color(0xFFDC143C),
+        focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(width: 0, color: Colors.transparent),
+            borderRadius: BorderRadius.circular(12)),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+      ),
+
       iconButtonTheme: IconButtonThemeData(
           style: ButtonStyle(
         backgroundColor:

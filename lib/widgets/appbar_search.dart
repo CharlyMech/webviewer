@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
 class AppbarSearch extends StatelessWidget {
-  final pink = const Color(0xFFFACCCC);
-  final grey = const Color(0xFFF2F2F7);
-
   const AppbarSearch({super.key});
 
   @override
@@ -11,27 +8,18 @@ class AppbarSearch extends StatelessWidget {
     return SizedBox(
       width: MediaQuery.of(context).size.width - 32,
       child: TextFormField(
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: Colors.white,
-          focusColor: pink,
-          focusedBorder: _border(pink),
-          border: _border(grey),
-          enabledBorder: _border(grey),
-          hintText: 'Start brand search',
-          // contentPadding: const EdgeInsets.symmetric(vertical: 10),
-          prefixIcon: const Icon(
+        enabled: false,
+        style: TextStyle(
+            color: Theme.of(context).colorScheme.onSecondary, fontSize: 18),
+        decoration: const InputDecoration(
+          hintText: 'Search...',
+          contentPadding: EdgeInsets.symmetric(vertical: 12),
+          prefixIcon: Icon(
             Icons.search,
-            color: Colors.grey,
           ),
         ),
         onFieldSubmitted: (value) {},
       ),
     );
   }
-
-  OutlineInputBorder _border(Color color) => OutlineInputBorder(
-        borderSide: BorderSide(width: 0.5, color: color),
-        borderRadius: BorderRadius.circular(12),
-      );
 }
