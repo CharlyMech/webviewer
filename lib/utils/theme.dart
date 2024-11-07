@@ -29,6 +29,11 @@ extension MyThemeToThemeData on MyTheme {
               ? Brightness.light
               : Brightness.dark,
         ),
+        appBarTheme: AppBarTheme(
+            backgroundColor:
+                Color(int.parse(primaryColor.replaceFirst('#', '0xff'))),
+            foregroundColor: Color(int.parse(white.replaceFirst('#', '0xff'))),
+            iconTheme: const IconThemeData(size: 30)),
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
           fillColor: Color(int.parse(white.replaceFirst('#', '0xff')))
