@@ -1,24 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:webviewer/app.dart';
+import 'package:webviewer/config/system.dart';
+import 'package:webviewer/config/theme.dart';
+import 'package:webviewer/constants/themes.dart';
 
 void main() {
-  // Ensure all widgets are initialized before launching the app
-  WidgetsFlutterBinding.ensureInitialized();
-  // Set the system UI overlay style at app startup
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      systemNavigationBarColor: Colors.transparent,
-      systemNavigationBarDividerColor: Colors.transparent,
-    ),
-  );
-  // Enable edge-to-edge
-  SystemChrome.setEnabledSystemUIMode(
-    SystemUiMode.edgeToEdge,
-    overlays: [SystemUiOverlay.top],
-  );
+  WidgetsFlutterBinding
+      .ensureInitialized(); // Ensure all widgets are initialized before launching the app
+  configureSystemUI();
+  ThemeType appTheme = getSystemBrightness();
 
   // TODO -> load preferred theme (pass it as parameter to App)
-  runApp(App());
+  runApp(App(
+    appTheme: appTheme,
+  ));
 }
