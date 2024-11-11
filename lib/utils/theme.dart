@@ -34,6 +34,11 @@ extension MyThemeToThemeData on MyTheme {
                 Color(int.parse(primaryColor.replaceFirst('#', '0xff'))),
             foregroundColor: Color(int.parse(white.replaceFirst('#', '0xff'))),
             iconTheme: const IconThemeData(size: 30)),
+        progressIndicatorTheme: ProgressIndicatorThemeData(
+            color: Color(int.parse(primaryColor.replaceFirst('#', '0xff')))
+                .withOpacity(0.8),
+            linearTrackColor:
+                Color(int.parse(white.replaceFirst('#', '0xff')))),
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
           fillColor: Color(int.parse(white.replaceFirst('#', '0xff')))
