@@ -18,6 +18,7 @@ class PopupMenu extends StatelessWidget {
           type: ToastificationType.info,
         );
       },
+      icon: const Icon(Icons.more_vert),
       itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
         const PopupMenuItem(
           child: Text('Item 1'),
