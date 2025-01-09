@@ -20,7 +20,7 @@ class AddWebScreen extends StatelessWidget {
         showProgressBar: false,
         alignment: Alignment.bottomCenter,
         title: Text('Page Added: $title ($url)'),
-        autoCloseDuration: Duration(seconds: 5),
+        autoCloseDuration: const Duration(seconds: 5),
       );
     }
   }
@@ -30,9 +30,13 @@ class AddWebScreen extends StatelessWidget {
       return 'Please enter a URL';
     }
 
-    const urlPattern = r'^(https?:\/\/)?' // Optional protocol
-        r'((www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,6})' // Domain
-        r'([\/\w\.-]*)*\/?$'; // Path
+    const urlPattern = r'^(https?:\/\/)?'
+        r'((([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6})|'
+        r'((\d{1,3}\.){3}\d{1,3}))'
+        r'(:\d+)?'
+        r'(\/[a-zA-Z0-9@:%._\+~#=\/-]*)?'
+        r'(\?[a-zA-Z0-9@:%._\+~#&=\/-]*)?'
+        r'(#[-a-zA-Z0-9@:%._\+~#=]*)?$';
     final regex = RegExp(urlPattern);
 
     if (!regex.hasMatch(value)) {
@@ -95,12 +99,12 @@ class AddWebScreen extends StatelessWidget {
                   ),
                   validator: _validateUrl,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 ElevatedButton(
                     onPressed: () => _getFormData(context),
-                    child: Text('Add web page'))
+                    child: const Text('Add web page'))
               ],
             ),
           ),
