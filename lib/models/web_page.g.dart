@@ -17,21 +17,24 @@ class WebPageAdapter extends TypeAdapter<WebPage> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return WebPage(
-      title: fields[0] as String,
-      description: fields[1] as String,
-      url: fields[2] as String,
+      uuid: fields[0] as String,
+      title: fields[1] as String,
+      description: fields[2] as String,
+      url: fields[3] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, WebPage obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
-      ..write(obj.title)
+      ..write(obj.uuid)
       ..writeByte(1)
-      ..write(obj.description)
+      ..write(obj.title)
       ..writeByte(2)
+      ..write(obj.description)
+      ..writeByte(3)
       ..write(obj.url);
   }
 
