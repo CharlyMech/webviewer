@@ -16,7 +16,7 @@ class ClippedAppbar extends StatelessWidget {
             height: height,
             decoration: const BoxDecoration(
                 gradient: LinearGradient(
-              colors: [Color(0xFF6A00FF), Color(0xFF833BFF)],
+              colors: [Color(0xFF6A00FF), Color(0xFF833BFF)], // TODO
             )),
           )),
     );

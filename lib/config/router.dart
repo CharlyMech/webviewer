@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:webviewer/bloc/box/box_cubit.dart';
 import 'package:webviewer/screens/add_web_screen.dart';
 import 'package:webviewer/screens/home.dart';
 import 'package:webviewer/screens/web_view_screen.dart';
@@ -26,12 +28,21 @@ final goRouter = GoRouter(routes: [
         transitionDuration: const Duration(milliseconds: 300)),
   ),
   GoRoute(
-    path: '/iedib',
-    pageBuilder: (context, state) => CustomTransitionPage(
+    path: '/webpage',
+    pageBuilder: (context, state) {
+      final uuid = state.uri.queryParameters['uuid'];
+      if (uuid == null) {
+        context.read<BoxCubit>().emitError('Something went wrong!');
+        // The code sould end here ... // TODO
+      }
+
+      final webPage = context.read<BoxCubit>().getWebPageByUuid(uuid!);
+
+      return CustomTransitionPage(
         key: state.pageKey,
-        child: const WebViewScreen(
-          title: 'IEDIB',
-          url: 'https://flutter.dev/',
+        child: WebViewScreen(
+          title: webPage.title,
+          url: webPage.url,
         ),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           return SlideTransition(
@@ -42,6 +53,8 @@ final goRouter = GoRouter(routes: [
             child: child,
           );
         },
-        transitionDuration: const Duration(milliseconds: 300)),
+        transitionDuration: const Duration(milliseconds: 300),
+      );
+    },
   ),
 ]);

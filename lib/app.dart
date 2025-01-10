@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:webviewer/bloc/box/box_cubit.dart';
 import 'package:webviewer/config/router.dart';
 import 'package:webviewer/constants/themes.dart';
 import 'package:webviewer/utils/theme.dart';
@@ -9,11 +11,16 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'WebViewer',
-      routerConfig: goRouter,
-      theme: themes[appTheme]!.toThemeData(),
-      // debugShowCheckedModeBanner: false,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => BoxCubit()..loadWebPages()),
+      ],
+      child: MaterialApp.router(
+        title: 'WebViewer',
+        routerConfig: goRouter,
+        theme: themes[appTheme]!.toThemeData(),
+        // debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }
