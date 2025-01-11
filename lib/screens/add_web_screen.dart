@@ -5,6 +5,7 @@ import 'package:toastification/toastification.dart';
 import 'package:uuid/uuid.dart';
 import 'package:webviewer/bloc/box/box_cubit.dart';
 import 'package:webviewer/models/web_page.dart';
+import 'package:webviewer/utils/string.dart';
 
 class AddWebScreen extends StatelessWidget {
   AddWebScreen({super.key});
@@ -17,7 +18,7 @@ class AddWebScreen extends StatelessWidget {
   void _getFormData(BuildContext context) {
     // TODO -> first check if the url does make ping so it exists
     if (_formKey.currentState!.validate()) {
-      String title = _titleController.text.trim();
+      String title = _titleController.text.trim().capitalize();
       String url = _urlController.text.trim();
       Uuid newUuid = const Uuid();
       final webPage = WebPage(
