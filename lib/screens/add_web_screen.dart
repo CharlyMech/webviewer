@@ -15,6 +15,7 @@ class AddWebScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>(); // Form key for validation
 
   void _getFormData(BuildContext context) {
+    // TODO -> first check if the url does make ping so it exists
     if (_formKey.currentState!.validate()) {
       String title = _titleController.text.trim();
       String url = _urlController.text.trim();
@@ -36,11 +37,15 @@ class AddWebScreen extends StatelessWidget {
     }
   }
 
-  String? _validateUrl(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter a URL';
+  String? _validateUrl(String? url) {
+    if (url == null || url.isEmpty) return 'Please enter a URL';
+
+    if (!url.startsWith('https://')) {
+      url = 'https://$url';
+      _urlController.text = url;
     }
 
+    // TODO -> http:// and IP based URL
     const urlPattern = r'^(https?:\/\/)?'
         r'((([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6})|'
         r'((\d{1,3}\.){3}\d{1,3}))'
@@ -50,8 +55,8 @@ class AddWebScreen extends StatelessWidget {
         r'(#[-a-zA-Z0-9@:%._\+~#=]*)?$';
     final regex = RegExp(urlPattern);
 
-    if (!regex.hasMatch(value)) {
-      return 'Please enter a valid URL';
+    if (!regex.hasMatch(url)) {
+      return 'Please enter a valid URL: https://example.com'; // Temporary until I manage to execute IP based URL and http://
     }
     return null;
   }
