@@ -26,8 +26,30 @@ class BoxCubit extends Cubit<BoxState> {
     }
   }
 
+  void removeWebPage(WebPage webPage) async {
+    try {
+      await webPageBox.delete(webPage);
+      final webPages = webPageBox.values.toList();
+      emit(WebPagesBoxLoaded(webPages));
+    } catch (e) {
+      emit(const WebPagesBoxError('Failed to remove web page'));
+    }
+  }
+
+  void removeAll() async {
+    try {
+      await webPageBox.clear();
+      final webPages = webPageBox.values.toList();
+      emit(WebPagesBoxLoaded(webPages));
+    } catch (e) {
+      emit(const WebPagesBoxError('Failed to remove web page'));
+    }
+  }
+
   WebPage getWebPageByUuid(String uuid) {
-    return webPageBox.get(uuid);
+    final webPage =
+        webPageBox.values.firstWhere((webPage) => webPage.uuid == uuid);
+    return webPage;
   }
 
   void emitError(String message) {

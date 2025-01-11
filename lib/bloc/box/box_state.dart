@@ -9,7 +9,7 @@ class WebPagesBoxLoading extends BoxState {
 }
 
 class WebPagesBoxLoaded extends BoxState {
-  final List<dynamic> webPages;
+  final List<dynamic> webPages; // TODO: Change to List<WebPage>
   const WebPagesBoxLoaded(this.webPages);
 }
 
