@@ -13,7 +13,10 @@ class Home extends StatelessWidget {
   Widget _buildPagesList(BuildContext context, WebPagesBoxLoaded state) {
     return Column(
       children: state.webPages
-          .map((webPage) => WebPageTile(webPage: webPage))
+          .map((webPage) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: WebPageTile(webPage: webPage),
+              ))
           .toList(),
     );
   }
@@ -32,7 +35,8 @@ class Home extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
               child: BlocBuilder<BoxCubit, BoxState>(
                 builder: (context, state) {
                   if (state is WebPagesBoxLoading) {
